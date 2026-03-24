@@ -1,7 +1,17 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import sharp from "sharp";
+import { imageLimit } from "@/lib/ratelimit";
 
 export async function POST(req: Request) {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0] ?? "anonymous";
+  const { success } = await imageLimit.limit(ip);
+  if (!success) {
+    return Response.json(
+      { error: "Daily limit reached for this demo (3 images per day). Clone the repo and add your own API keys for unlimited use." },
+      { status: 429 }
+    );
+  }
+
   const apiKey = process.env.GEMINI_API_KEY;
 
   if (!apiKey) {

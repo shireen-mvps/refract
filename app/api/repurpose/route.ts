@@ -1,6 +1,7 @@
 import { anthropic } from "@ai-sdk/anthropic";
 import { generateObject } from "ai";
 import { z } from "zod";
+import { repurposeLimit } from "@/lib/ratelimit";
 
 const repurposeSchema = z.object({
   instagram: z
@@ -31,6 +32,15 @@ const repurposeSchema = z.object({
 });
 
 export async function POST(req: Request) {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0] ?? "anonymous";
+  const { success } = await repurposeLimit.limit(ip);
+  if (!success) {
+    return Response.json(
+      { error: "Daily limit reached for this demo (5 repurposes per day). Clone the repo and add your own API keys for unlimited use." },
+      { status: 429 }
+    );
+  }
+
   try {
     const { businessName, businessType, contentType, tone, content } =
       await req.json();
