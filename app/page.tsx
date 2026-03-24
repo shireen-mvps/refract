@@ -237,14 +237,21 @@ function ImageGenerationCard({
     if (!file) return;
 
     setProductImagePreview(URL.createObjectURL(file));
-    setProductImageMimeType(file.type || "image/jpeg");
+    setProductImageMimeType("image/jpeg");
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      const dataUrl = reader.result as string;
+    const img = new Image();
+    img.onload = () => {
+      const MAX = 1024;
+      const scale = Math.min(1, MAX / Math.max(img.width, img.height));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      canvas.getContext("2d")!.drawImage(img, 0, 0, canvas.width, canvas.height);
+      const dataUrl = canvas.toDataURL("image/jpeg", 0.85);
       setProductImage(dataUrl.split(",")[1]);
+      URL.revokeObjectURL(img.src);
     };
-    reader.readAsDataURL(file);
+    img.src = URL.createObjectURL(file);
   };
 
   const handleGenerateImage = async () => {
