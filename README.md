@@ -6,7 +6,7 @@ A full-stack AI web app that takes any piece of content (recipe, product descrip
 
 Built with **Next.js 15**, **Vercel AI SDK**, and **Claude AI (claude-sonnet-4-6)**.
 
-**Live demo:** [your-app.vercel.app](https://your-app.vercel.app) <!-- update after deploy -->
+**Live demo:** [ai-content-repurposer-nu.vercel.app](https://ai-content-repurposer-nu.vercel.app)
 
 ---
 
