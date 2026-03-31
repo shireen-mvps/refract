@@ -42,7 +42,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { businessName, businessType, contentType, tone, content } =
+    const { businessName, businessType, contentType, tone, campaignGoal, content } =
       await req.json();
 
     if (!content || content.trim().length < 10) {
@@ -63,6 +63,7 @@ Business Name: ${businessName || "this business"}
 Business Type: ${businessType}
 Content Type: ${contentType}
 Tone: ${tone}
+Campaign Goal: ${campaignGoal || "Grow Awareness"}
 
 Original Content:
 ---
@@ -70,11 +71,11 @@ ${content}
 ---
 
 Rules for each platform:
-- instagram: Start with a strong hook. Use 2-4 well-placed emojis. End with 4-6 relevant hashtags on a new line. Keep the caption punchy and visual. Naturally mention "${businessName || "the business"}".
-- facebook: Conversational and warm. Write like you're talking to your community. Optionally end with a light question. Naturally mention "${businessName || "the business"}".
-- whatsapp: Write as if personally messaging a regular customer. No hashtags. Keep it short and friendly — like a real message from a person, not a brand.
-- email: Format exactly as "Subject: [catchy subject line]\\n\\n[2-3 sentence body that hooks the reader and makes them want to read more]". Warm but professional.
-- linkedin: Take a broader, professional angle. What is the insight or story here that a professional audience would appreciate? Can reference the business but focus on a wider takeaway.
+- instagram: Start with a strong hook. Use 2-4 well-placed emojis. End with 4-6 relevant hashtags on a new line. Keep the caption punchy and visual. Naturally mention "${businessName || "the business"}". Subtly align with the campaign goal: ${campaignGoal}.
+- facebook: Conversational and warm. Write like you're talking to your community. Optionally end with a light question. Naturally mention "${businessName || "the business"}". Subtly align with the campaign goal: ${campaignGoal}.
+- whatsapp: Write as if personally messaging a regular customer. No hashtags. Keep it short and friendly — like a real message from a person, not a brand. Subtly align with the campaign goal: ${campaignGoal}.
+- email: Format exactly as "Subject: [catchy subject line]\\n\\n[2-3 sentence body that hooks the reader and makes them want to read more]". Warm but professional. Align with the campaign goal: ${campaignGoal}.
+- linkedin: Take a broader, professional angle. What is the insight or story here that a professional audience would appreciate? Can reference the business but focus on a wider takeaway. Align with the campaign goal: ${campaignGoal}.
 
 Tone guide: "${tone}" — apply this consistently across all platforms while respecting each platform's natural culture.
 

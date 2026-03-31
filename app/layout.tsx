@@ -13,12 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Content Repurposer",
+  title: "Refract — AI Content Repurposer",
   description:
-    "Turn one piece of content into 5 ready-to-post formats — instantly. Powered by Claude AI.",
+    "One input. Five platforms. Refract turns any content into ready-to-post captions for Instagram, Facebook, WhatsApp, Email, and LinkedIn — powered by Claude.",
   openGraph: {
-    title: "AI Content Repurposer",
-    description: "Turn one piece of content into 5 ready-to-post formats.",
+    title: "Refract — AI Content Repurposer",
+    description: "One input. Five platforms. Powered by Claude Claude.",
     type: "website",
   },
 };
