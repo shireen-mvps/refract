@@ -63,6 +63,48 @@
   50%       { opacity: 0.5; transform: scale(0.85); }
 }
 
+@keyframes drift-orb {
+  0%, 100% { transform: translate(0px,   0px)  scale(1);    opacity: 0.7; }
+  25%       { transform: translate(40px, -25px) scale(1.06); opacity: 1;   }
+  50%       { transform: translate(20px,  30px) scale(0.96); opacity: 0.6; }
+  75%       { transform: translate(-30px, 10px) scale(1.03); opacity: 0.9; }
+}
+
+@keyframes drift-orb-b {
+  0%, 100% { transform: translate(0px,   0px)  scale(1);    opacity: 0.6; }
+  33%       { transform: translate(-35px, 20px) scale(1.05); opacity: 0.9; }
+  66%       { transform: translate(25px, -15px) scale(0.95); opacity: 0.5; }
+}
+
+@keyframes float-particle {
+  0%, 100% { transform: translateY(0px)   translateX(0px);  opacity: 0.3; }
+  25%       { transform: translateY(-14px) translateX(6px);  opacity: 0.7; }
+  50%       { transform: translateY(-7px)  translateX(-4px); opacity: 0.5; }
+  75%       { transform: translateY(-18px) translateX(2px);  opacity: 0.8; }
+}
+
+@keyframes float-particle-b {
+  0%, 100% { transform: translateY(0px)   translateX(0px);   opacity: 0.2; }
+  33%       { transform: translateY(-20px) translateX(-8px);  opacity: 0.6; }
+  66%       { transform: translateY(-9px)  translateX(10px);  opacity: 0.4; }
+}
+
+@keyframes float-particle-c {
+  0%, 100% { transform: translateY(0px)   translateX(0px);  opacity: 0.4; }
+  50%       { transform: translateY(-16px) translateX(5px);  opacity: 0.9; }
+}
+
+@keyframes fade-in-blur {
+  from { opacity: 0; transform: translateY(14px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0px); }
+}
+
+@keyframes slide-up-spring {
+  0%   { opacity: 0; transform: translateY(28px) scale(0.97); }
+  65%  { transform: translateY(-3px) scale(1.004); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 /* ─── Animation utilities ─── */
 
 @layer utilities {
@@ -105,6 +147,36 @@
   .animate-gradient-shift {
     background-size: 200% 200%;
     animation: gradient-shift 4s ease infinite;
+  }
+
+  .animate-drift-orb {
+    animation: drift-orb 18s ease-in-out infinite;
+  }
+
+  .animate-drift-orb-b {
+    animation: drift-orb-b 22s ease-in-out infinite;
+  }
+
+  .animate-float-particle {
+    animation: float-particle 9s ease-in-out infinite;
+  }
+
+  .animate-float-particle-b {
+    animation: float-particle-b 12s ease-in-out infinite;
+  }
+
+  .animate-float-particle-c {
+    animation: float-particle-c 7s ease-in-out infinite;
+  }
+
+  .animate-fade-in-blur {
+    opacity: 0;
+    animation: fade-in-blur 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-up-spring {
+    opacity: 0;
+    animation: slide-up-spring 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   /* Scrollbar hide */

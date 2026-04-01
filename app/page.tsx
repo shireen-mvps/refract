@@ -120,13 +120,51 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#07071a] text-white overflow-x-hidden">
 
-      {/* Dot grid background */}
-      <div className="fixed inset-0 pointer-events-none"
-        style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+      {/* ── Background system ───────────────────────────────────────── */}
 
-      {/* Ambient glow */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none animate-glow-breathe"
-        style={{ background: "radial-gradient(ellipse at center, rgba(139,92,246,0.09) 0%, transparent 70%)" }} />
+      {/* Layer 1: dot grid */}
+      <div className="fixed inset-0 pointer-events-none"
+        style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+
+      {/* Layer 2: primary violet orb — top center, breathes */}
+      <div className="fixed top-[-8%] left-1/2 -translate-x-1/2 w-[950px] h-[600px] pointer-events-none animate-glow-breathe"
+        style={{ background: "radial-gradient(ellipse at center, rgba(139,92,246,0.13) 0%, transparent 65%)" }} />
+
+      {/* Layer 3: fuchsia orb — top right, drifts */}
+      <div className="fixed pointer-events-none animate-drift-orb"
+        style={{ top: "-5%", right: "-8%", width: "600px", height: "500px",
+          background: "radial-gradient(ellipse at center, rgba(217,70,239,0.08) 0%, transparent 65%)",
+          animationDelay: "2s" }} />
+
+      {/* Layer 4: indigo orb — bottom left, drifts on alternate path */}
+      <div className="fixed pointer-events-none animate-drift-orb-b"
+        style={{ bottom: "0%", left: "-10%", width: "650px", height: "550px",
+          background: "radial-gradient(ellipse at center, rgba(99,102,241,0.09) 0%, transparent 65%)",
+          animationDelay: "6s" }} />
+
+      {/* Layer 5: soft bottom vignette — grounds the page */}
+      <div className="fixed bottom-0 left-0 right-0 h-64 pointer-events-none"
+        style={{ background: "linear-gradient(to top, rgba(7,7,26,0.6) 0%, transparent 100%)" }} />
+
+      {/* Layer 6: floating micro-particles */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute w-1 h-1 rounded-full bg-violet-400/50 animate-float-particle"
+          style={{ top: "14%", left: "18%", animationDelay: "0s" }} />
+        <div className="absolute w-1.5 h-1.5 rounded-full bg-fuchsia-400/35 animate-float-particle-b"
+          style={{ top: "28%", right: "22%", animationDelay: "2s" }} />
+        <div className="absolute w-1 h-1 rounded-full bg-violet-300/45 animate-float-particle-c"
+          style={{ top: "55%", left: "8%", animationDelay: "1s" }} />
+        <div className="absolute w-0.5 h-0.5 rounded-full bg-pink-400/50 animate-float-particle"
+          style={{ top: "42%", right: "12%", animationDelay: "3.5s" }} />
+        <div className="absolute w-1 h-1 rounded-full bg-indigo-400/40 animate-float-particle-b"
+          style={{ top: "72%", left: "38%", animationDelay: "5s" }} />
+        <div className="absolute w-1.5 h-1.5 rounded-full bg-violet-400/25 animate-float-particle-c"
+          style={{ top: "18%", right: "8%", animationDelay: "2.5s" }} />
+        <div className="absolute w-0.5 h-0.5 rounded-full bg-fuchsia-300/60 animate-float-particle"
+          style={{ top: "85%", left: "65%", animationDelay: "4s" }} />
+        <div className="absolute w-1 h-1 rounded-full bg-violet-300/35 animate-float-particle-b"
+          style={{ top: "62%", right: "35%", animationDelay: "1.5s" }} />
+      </div>
 
       {/* Header */}
       <Header onUpgradeClick={() => document.getElementById("upgrade")?.scrollIntoView({ behavior: "smooth" })} />

@@ -28,10 +28,10 @@ function Spinner() {
 interface InputFormProps {
   businessName: string; setBusinessName: (v: string) => void;
   businessType: string; setBusinessType: (v: string) => void;
-  contentType: string;  setContentType:  (v: string) => void;
-  tone: string;         setTone:         (v: string) => void;
+  contentType: string; setContentType: (v: string) => void;
+  tone: string; setTone: (v: string) => void;
   campaignGoal: string; setCampaignGoal: (v: string) => void;
-  content: string;      setContent:      (v: string) => void;
+  content: string; setContent: (v: string) => void;
   brandKitLoaded: boolean;
   loading: boolean;
   error: string | null;
@@ -43,10 +43,10 @@ interface InputFormProps {
 export function InputForm({
   businessName, setBusinessName,
   businessType, setBusinessType,
-  contentType,  setContentType,
-  tone,         setTone,
+  contentType, setContentType,
+  tone, setTone,
   campaignGoal, setCampaignGoal,
-  content,      setContent,
+  content, setContent,
   brandKitLoaded, loading, error,
   toastVisible, onSubmit, onSaveBrandKit,
 }: InputFormProps) {
@@ -57,42 +57,41 @@ export function InputForm({
     <>
       <form
         onSubmit={onSubmit}
-        className="bg-white/[0.04] rounded-2xl border border-white/[0.07] backdrop-blur-sm p-6 flex flex-col gap-5 animate-fade-in-up"
-        style={{ animationDelay: "0.1s" }}
+        className="bg-white/[0.04] rounded-2xl border border-white/[0.07] backdrop-blur-sm p-6 flex flex-col gap-5"
       >
         {/* Business Name */}
-        <div>
-          <label className="block text-sm font-medium text-white/65 mb-1.5">Business Name</label>
+        <div className="animate-slide-up-spring" style={{ animationDelay: "0.05s" }}>
+          <label className="block text-sm font-semibold text-white/75 mb-1.5">Business Name</label>
           <input type="text" value={businessName} onChange={(e) => setBusinessName(e.target.value)}
             placeholder="e.g. Sunny Homemade" className={inputCls} />
         </div>
 
         {/* Business Type */}
-        <div>
-          <label className="block text-sm font-medium text-white/65 mb-1.5">Business Type</label>
+        <div className="animate-slide-up-spring" style={{ animationDelay: "0.13s" }}>
+          <label className="block text-sm font-semibold text-white/75 mb-1.5">Business Type</label>
           <select value={businessType} onChange={(e) => setBusinessType(e.target.value)} className={selectCls}>
             {BUSINESS_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
           </select>
         </div>
 
         {/* Campaign Goal */}
-        <div>
-          <label className="block text-sm font-medium text-white/65 mb-1.5">Campaign Goal</label>
+        <div className="animate-slide-up-spring" style={{ animationDelay: "0.21s" }}>
+          <label className="block text-sm font-semibold text-white/75 mb-1.5">Campaign Goal</label>
           <select value={campaignGoal} onChange={(e) => setCampaignGoal(e.target.value)} className={selectCls}>
             {CAMPAIGN_GOALS.map((g) => <option key={g} value={g}>{g}</option>)}
           </select>
         </div>
 
         {/* Content Type + Tone */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 animate-slide-up-spring" style={{ animationDelay: "0.29s" }}>
           <div>
-            <label className="block text-sm font-medium text-white/65 mb-1.5">Content Type</label>
+            <label className="block text-sm font-semibold text-white/75 mb-1.5">Content Type</label>
             <select value={contentType} onChange={(e) => setContentType(e.target.value)} className={selectCls}>
               {CONTENT_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-white/65 mb-1.5">Tone</label>
+            <label className="block text-sm font-semibold text-white/75 mb-1.5">Tone</label>
             <select value={tone} onChange={(e) => setTone(e.target.value)} className={selectCls}>
               {TONES.map((t) => <option key={t} value={t}>{t}</option>)}
             </select>
@@ -100,8 +99,8 @@ export function InputForm({
         </div>
 
         {/* Brand Kit row */}
-        <div className="flex items-center justify-between py-2.5 px-4 rounded-xl border border-white/[0.07] bg-white/[0.02]">
-          <div className="flex items-center gap-2 text-xs text-white/45">
+        <div className="flex items-center justify-between py-2.5 px-4 rounded-xl border border-white/[0.07] bg-white/[0.02] animate-slide-up-spring" style={{ animationDelay: "0.37s" }}>
+          <div className="flex items-center gap-2 text-sm text-white/50">
             <BrandKitIcon className="w-3.5 h-3.5 shrink-0" />
             {brandKitLoaded
               ? <span className="text-violet-400">Brand kit loaded — {businessName}</span>
@@ -109,16 +108,16 @@ export function InputForm({
             }
           </div>
           <button type="button" onClick={onSaveBrandKit}
-            className="text-xs px-3 py-1.5 rounded-lg bg-violet-600/20 border border-violet-500/30 text-violet-400 hover:bg-violet-600/30 transition-all duration-150 shrink-0 ml-3">
+            className="text-sm px-3 py-1.5 rounded-lg bg-violet-600/20 border border-violet-500/30 text-violet-400 hover:bg-violet-600/30 hover:border-violet-500/50 transition-all duration-200 shrink-0 ml-3">
             Save Kit
           </button>
         </div>
 
         {/* Content textarea */}
-        <div>
+        <div className="animate-slide-up-spring" style={{ animationDelay: "0.45s" }}>
           <div className="flex items-center justify-between mb-1.5">
-            <label className="block text-sm font-medium text-white/65">Your Content</label>
-            <span className={`text-xs tabular-nums ${charCount > 1400 ? "text-red-400" : "text-white/35"}`}>
+            <label className="block text-sm font-semibold text-white/75">Your Content</label>
+            <span className={`text-sm tabular-nums ${charCount > 1400 ? "text-red-400" : "text-white/40"}`}>
               {charCount} / 1500
             </span>
           </div>
@@ -134,7 +133,7 @@ export function InputForm({
 
         {/* Error */}
         {error && (
-          <div className="flex items-start gap-2 text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
+          <div className="flex items-start gap-2 text-base text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3 animate-fade-in-blur">
             <span className="mt-0.5 shrink-0">⚠</span>
             <span>{error}</span>
           </div>
@@ -144,13 +143,14 @@ export function InputForm({
         <button
           type="submit"
           disabled={!isReady || loading}
-          className="w-full py-3 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/35 hover:scale-[1.01] active:scale-[0.99]"
+          className="w-full py-3.5 rounded-xl font-semibold text-base text-white bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-[1.015] active:scale-[0.985] animate-slide-up-spring"
+          style={{ animationDelay: "0.53s" }}
         >
           {loading ? <><Spinner />Repurposing content...</> : "Repurpose Content →"}
         </button>
 
-        <p className="text-xs text-center text-white/30">
-          Works for any business. Demo pre-loaded with Sunny Homemade.
+        <p className="text-sm text-center text-white/35 animate-fade-in-blur" style={{ animationDelay: "0.6s" }}>
+          Works for any business. Demo pre-loaded with Sunny Homemade, a real homemade food business.
         </p>
       </form>
 

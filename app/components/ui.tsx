@@ -70,7 +70,7 @@ export function Toast({ message, visible }: { message: string; visible: boolean 
 
 // ── Select / Input class helpers (exported for reuse) ─────────────
 export const selectCls =
-  "w-full px-3.5 py-3 rounded-xl border border-white/10 bg-[#0d0d24] text-sm text-white focus:outline-none focus:ring-2 focus:ring-violet-500/70 focus:border-transparent transition appearance-none cursor-pointer";
+  "w-full px-3.5 py-3 rounded-xl border border-white/10 bg-[#0d0d24] text-base text-white focus:outline-none focus:ring-2 focus:ring-violet-500/70 focus:border-transparent transition-all duration-200 appearance-none cursor-pointer";
 
 export const inputCls =
-  "w-full px-3.5 py-3 rounded-xl border border-white/10 bg-white/5 text-sm text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-violet-500/70 focus:border-transparent transition";
+  "w-full px-3.5 py-3 rounded-xl border border-white/10 bg-white/5 text-base text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-violet-500/70 focus:border-transparent transition-all duration-200";

@@ -46,8 +46,8 @@ export function OutputSection({
             <PrismIcon className="w-7 h-7" />
           </div>
           <div>
-            <p className="text-sm font-semibold text-white/60">Your repurposed content will appear here</p>
-            <p className="text-xs text-white/35 mt-1.5">5 platform-ready posts generated in seconds</p>
+            <p className="text-base font-semibold text-white/65">Your repurposed content will appear here</p>
+            <p className="text-sm text-white/40 mt-1.5">5 platform-ready posts generated in seconds</p>
           </div>
           <div className="flex flex-wrap gap-2 justify-center mt-1">
             {PLATFORMS.map((p) => {
@@ -64,18 +64,22 @@ export function OutputSection({
 
       {/* Loading */}
       {loading && (
-        <div className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-12 text-center flex flex-col items-center gap-5">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-fuchsia-600 flex items-center justify-center shadow-2xl shadow-violet-500/30 animate-pulse">
-            <PrismIcon className="w-8 h-8" />
+        <div className="rounded-2xl border border-violet-500/20 bg-white/[0.03] p-12 text-center flex flex-col items-center gap-6 animate-fade-in-blur">
+          <div className="relative">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-600 to-fuchsia-600 flex items-center justify-center shadow-2xl shadow-violet-500/40 animate-float-gentle">
+              <PrismIcon className="w-10 h-10" />
+            </div>
+            {/* Glow ring */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-600 to-fuchsia-600 opacity-30 blur-xl animate-glow-breathe" />
           </div>
           <div>
-            <p className="text-sm font-semibold text-white/80">Claude is writing your content...</p>
-            <p className="text-xs text-white/45 mt-1.5">Crafting 5 platform-specific posts</p>
+            <p className="text-base font-semibold text-white/85">Claude is writing your content...</p>
+            <p className="text-sm text-white/50 mt-2">Crafting 5 platform-specific posts</p>
           </div>
-          <div className="flex gap-1.5">
+          <div className="flex gap-2">
             {[0, 1, 2].map((i) => (
-              <div key={i} className="w-2 h-2 rounded-full bg-violet-500 animate-bounce"
-                style={{ animationDelay: `${i * 0.15}s` }} />
+              <div key={i} className="w-2.5 h-2.5 rounded-full bg-violet-400 animate-bounce"
+                style={{ animationDelay: `${i * 0.18}s` }} />
             ))}
           </div>
         </div>
@@ -83,19 +87,19 @@ export function OutputSection({
 
       {/* Output cards */}
       {output && (
-        <div className="animate-slide-in-down flex flex-col gap-4">
+        <div className="flex flex-col gap-4">
           {PLATFORMS.map((platform, index) => (
             <OutputCard key={platform.key} platform={platform} content={output[platform.key]} index={index} />
           ))}
 
           {/* Export PPTX */}
-          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4 flex items-center justify-between gap-3 animate-card-appear" style={{ animationDelay: "0.4s" }}>
+          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4 flex items-center justify-between gap-3 animate-slide-up-spring" style={{ animationDelay: "0.5s" }}>
             <div className="flex flex-col gap-0.5">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-white">Export Content Deck</span>
+                <span className="text-base font-semibold text-white">Export Content Deck</span>
                 <ProBadge />
               </div>
-              <p className="text-xs text-white/45">Editable PowerPoint — cover, overview &amp; all 5 platform posts</p>
+              <p className="text-sm text-white/50">Editable PowerPoint — cover, overview &amp; all 5 platform posts</p>
             </div>
             <button
               type="button"
