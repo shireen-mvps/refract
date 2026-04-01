@@ -12,14 +12,14 @@ const redis = isConfigured
     })
   : null;
 
-const noopLimit = { limit: async () => ({ success: true }) };
-
 // 5 content repurposes per IP per 24 hours
+// Soft fallback (allow) when Upstash is unconfigured — Anthropic spending cap acts as backstop
 export const repurposeLimit = redis
-  ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(5, "24 h"), prefix: "rl:repurpose" })
-  : noopLimit;
+  ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(5, "24 h"), prefix: "rl:repurpose", analytics: true })
+  : { limit: async () => ({ success: true, remaining: 0 }) };
 
-// 3 image generations per IP per 24 hours
+// 2 image generations per IP per 24 hours
+// HARD BLOCK when Upstash is unconfigured — Gemini has no spending cap, no fallback allowed
 export const imageLimit = redis
-  ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(3, "24 h"), prefix: "rl:image" })
-  : noopLimit;
+  ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(2, "24 h"), prefix: "rl:image", analytics: true })
+  : { limit: async () => ({ success: false, remaining: 0 }) };

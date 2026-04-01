@@ -1,4 +1,4 @@
-# Refract — AI Content Repurposer
+# Refract — Content Repurposer
 
 > One input. Five platforms. Instantly.
 
@@ -59,8 +59,8 @@ Each output is tailored to the native culture of that platform — not just the 
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/shireen-mvps/refract.git
-cd refract
+git clone https://github.com/shireen-mvps/refract_content_repurposer.git
+cd refract_content_repurposer
 ```
 
 ### 2. Install dependencies

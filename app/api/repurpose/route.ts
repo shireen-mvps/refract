@@ -54,6 +54,7 @@ export async function POST(req: Request) {
 
     const { object } = await generateObject({
       model: anthropic("claude-sonnet-4-6"),
+      maxTokens: 800, // 5 posts × ~150 chars avg — generous buffer, hard cap on cost
       schema: repurposeSchema,
       prompt: `You are a social media content expert who specialises in helping small businesses grow their online presence.
 

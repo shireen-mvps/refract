@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   const { success } = await imageLimit.limit(ip);
   if (!success) {
     return Response.json(
-      { error: "Daily limit reached for this demo (3 images per day). Clone the repo and add your own API keys for unlimited use." },
+      { error: "Daily limit reached for this demo (2 images per day). Clone the repo and add your own API keys for unlimited use." },
       { status: 429 }
     );
   }
@@ -33,8 +33,27 @@ export async function POST(req: Request) {
       customPrompt,
     } = await req.json();
 
-    const [width, height] = (imageFormat || "1024x1024").split("x");
-    const excerpt = content.slice(0, 300);
+    // Fix 3 — whitelist allowed formats only; reject anything unexpected
+    const ALLOWED_FORMATS = ["1024x1024", "1920x1080", "1080x1920"];
+    const resolvedFormat = ALLOWED_FORMATS.includes(imageFormat) ? imageFormat : "1024x1024";
+    const [width, height] = resolvedFormat.split("x");
+
+    // Fix 4 — cap customPrompt to 200 characters to prevent prompt injection / inflated costs
+    if (customPrompt && customPrompt.length > 200) {
+      return Response.json(
+        { error: "Custom prompt must be 200 characters or fewer." },
+        { status: 400 }
+      );
+    }
+
+    // Fix 5 — cap productImage base64 size (~4MB limit: covers ~3MB source image)
+    if (productImage && productImage.length > 4_000_000) {
+      return Response.json(
+        { error: "Product image is too large. Please use an image under 3MB." },
+        { status: 400 }
+      );
+    }
+    const excerpt = (content || "").slice(0, 300);
 
     const styleGuides: Record<string, string> = {
       "Flat Lay":
