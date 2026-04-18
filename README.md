@@ -59,7 +59,7 @@ Each output is tailored to the native culture of that platform — not just the 
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/shireen-mvps/refract_content_repurposer.git
+git clone https://github.com/shireen168/refract_content_repurposer.git
 cd refract_content_repurposer
 ```
 
@@ -178,4 +178,4 @@ Features planned for the Pro tier:
 
 ---
 
-Built by a Marketing professional specialising in applied AI. View the full portfolio of production-grade AI marketing tools at [aiwithshireen.com](https://aiwithshireen.com) or browse more projects on [GitHub](https://github.com/shireen-mvps).
+Built by a Marketing professional specialising in applied AI. View the full portfolio of production-grade AI marketing tools at [aiwithshireen.com](https://aiwithshireen.com) or browse more projects on [GitHub](https://github.com/shireen168).
